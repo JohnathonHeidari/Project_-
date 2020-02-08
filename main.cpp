@@ -18,33 +18,45 @@ int main() {
     // start the menu (with selection)
     int x = 0;
     Deck myDeck;
-    
     while(true){
+        cout<<endl;
         x = menu();
         if(x == 1){
             myDeck = Deck();
+            cout<<"New Deck Created"<<endl;
         }
         else if(x == 2){
             myDeck.showDeck();
         }
         else if (x == 3){
-            
+            cout<<"Successfully Shuffle"<<endl;
+            myDeck.shuffle();
         }
         else if (x == 4){
+            int pile = 0;
             // began the game
             while(myDeck.cardsLeft() != 0){
                 Card c1 = myDeck.deal();
-                int pile = c1.getValue();
+                pile = c1.getValue();
                 cout<<c1.getCard()<<", ";
                     while(!isPrime(pile) && myDeck.cardsLeft() != 0){
                         c1 = myDeck.deal();
                         cout<<c1.getCard()<<", ";
                         pile += c1.getValue();
                     }
+                if(isPrime(pile)){
                     cout<<" Prime: "<<pile<<endl;
+                }
+            }
+            if(isPrime(pile)){
+                cout<<"Winner in "<<pile<<" piles!"<<endl;
+            }
+            else{
+                cout<<"Loser"<<endl;
             }
         }
         else if (x == 5){
+            cout<<"Thanks for playing!"<<endl;
             break;
         }
         else{

@@ -40,7 +40,21 @@ void Deck:: showDeck(){
 };
 
 void Deck:: shuffle(){
-    //todo: code
+
+    srand(time(nullptr));
+    //int x = rand()%52;
+    //int y = rand()%52;
+    for (int i = 0; i<52; i++)
+    {
+        long int index = rand()%52;
+        if (index != i)
+        {
+            Card temp = storage[i];
+            storage[i] = storage[index];
+            storage[index] = temp;
+        }
+    }
+
 };
 
 int Deck:: cardsLeft(){
@@ -54,7 +68,6 @@ int Deck:: cardsLeft(){
     return x;
 };
 void Deck:: refreshDeck(){
-    //todo: code
     char rank[13] = {'A','2','3','4','5','6','7','8','9','0','J','Q','K'};
     char suit[4] = {'S','H','D','C'};
     int count = 0;
@@ -66,7 +79,6 @@ void Deck:: refreshDeck(){
     }
 }
 Card Deck:: deal(){
-    //todo: code
     string stuff;
     Card deal;
      for (int i = 0; 52 > i; i++) {
@@ -75,7 +87,7 @@ Card Deck:: deal(){
                // if the suit is 10.
                if(stuff.size() == 3){
                    top = storage[i].getValue();
-                   deal.setCard(stuff[0],stuff[2]);
+                   deal.setCard(stuff[1],stuff[2]);
                    // remove the card from the list
                    storage[i].setCard('-','-');
                    return deal;

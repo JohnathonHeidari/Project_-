@@ -122,10 +122,11 @@ using namespace std;
 string Card:: getCard(){
     string showcard;
     if(mRank == '0'){
-        showcard = "10";
+        //TEN
+        showcard += "10";
     }
     else{
-        showcard = mRank;
+        showcard += mRank;
     }
     return showcard + mSuit;
 }

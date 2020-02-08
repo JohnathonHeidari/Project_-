@@ -22,6 +22,7 @@ int main() {
     while(true){
         x = menu();
         if(x == 1){
+            myDeck = Deck();
         }
         else if(x == 2){
             myDeck.showDeck();
@@ -30,17 +31,18 @@ int main() {
             
         }
         else if (x == 4){
-            Card c1 = myDeck.deal();
-            int pile = c1.getValue();
-            cout<<c1.getCard()<<", ";
-           
-                while(!isPrime(pile)){
-                    c1 = myDeck.deal();
-                    cout<<c1.getCard()<<", ";
-                    pile += c1.getValue();
-                }
-                cout<<" Prime: "<<pile<<endl;
-            
+            // began the game
+            while(myDeck.cardsLeft() != 0){
+                Card c1 = myDeck.deal();
+                int pile = c1.getValue();
+                cout<<c1.getCard()<<", ";
+                    while(!isPrime(pile) && myDeck.cardsLeft() != 0){
+                        c1 = myDeck.deal();
+                        cout<<c1.getCard()<<", ";
+                        pile += c1.getValue();
+                    }
+                    cout<<" Prime: "<<pile<<endl;
+            }
         }
         else if (x == 5){
             break;

@@ -47,6 +47,8 @@ using namespace std;
                 return 10;
             case 'Q':
                 return 10;
+            case 'J':
+                return 10;
             default:
                 return -1; //invalid option
         }

@@ -46,7 +46,7 @@ void Deck:: shuffle(){
 int Deck:: cardsLeft(){
     int x = 0;
     for (int i = 0; 52 > i; i++) {
-        if(storage[i].getCard() != "zz"){
+        if(storage[i].getValue() != -1){
             x += 1;
         }
     }
@@ -70,7 +70,6 @@ Card Deck:: deal(){
     string stuff;
     Card deal;
      for (int i = 0; 52 > i; i++) {
-         
            if(storage[i].getValue() != -1){
                stuff = storage[i].getCard();
                // if the suit is 10.
@@ -78,20 +77,20 @@ Card Deck:: deal(){
                    top = storage[i].getValue();
                    deal.setCard(stuff[0],stuff[2]);
                    // remove the card from the list
-                   storage[i].setCard('z','z');
+                   storage[i].setCard('-','-');
                    return deal;
                }
                else{
                    deal.setCard(stuff[0],stuff[1]);
                    // remove the card from the list
-                   storage[i].setCard('z','z');
+                   storage[i].setCard('-','-');
                    return deal;
                   
                }
 
            }
      }
-    cout<<top<<"kkk"<<endl;
+    deal.setCard('z', 'z');
     return deal;
 };
 

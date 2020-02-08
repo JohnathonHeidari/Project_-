@@ -15,7 +15,7 @@
 class Deck{
 private:
     Card storage[52];
-    int top;
+    int top = 0;
 public:
     // contrustor
     Deck();

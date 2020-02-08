@@ -6,43 +6,52 @@
 //  Copyright © 2020 Johnny Heidari. All rights reserved.
 //
 #include <iostream>
+#include <stdio.h>
 #include <string>
 #include "Card.hpp"
+#include "Deck.hpp"
 using namespace std;
+
     // contrustor
     Card::Card(){}
     Card::Card(char r, char s){
-        mRank = r;
-        mSuit = s;
+         mRank = r;
+         mSuit = s;
     }
     
     // accessor (getter)
      int Card::getValue(){
-         cout<<mRank;
         switch(mRank) {
-            case 2:
+            case '2':
                 return 2;
-            case 3:
+            case '3':
                 return 3;
-            case 4:
+            case '4':
                 return 4;
-            case 5:
+            case '5':
                 return 5;
-            case 6:
+            case '6':
                 return 6;
-            case 7:
+            case '7':
                 return 7;
-            case 9:
+            case '8':
                 return 8;
-            case 0:
+            case '9':
                 return 9;
             case 'A':
                 return 1;
             // Jack, King, and Queen will be 10
-            default:
+            case '0':
                 return 10;
+            case 'K':
+                return 10;
+            case 'Q':
+                return 10;
+            default:
+                return -1; //invalid option
         }
-    };
+     };
+
     // mutator (setter)
 
     void Card:: setCard(char r, char s){
@@ -52,59 +61,70 @@ using namespace std;
     // other methods
     void Card::showCard(){
         string showcard;
-        cout<<mRank<<" "<<mSuit<<endl;
+        //cout<<mRank<<" "<<mSuit<<endl;
         if (mRank == 'A') {
-            showcard = "Ace";
+            showcard = "A";
         }
         else if (mRank == '2'){
-            showcard = "Two";
+            showcard = "2";
         }
+        else if (mRank == '3'){
+            showcard = "3";
+        }
+        else if (mRank == '4'){
+            showcard = "4";
+        }
+        else if (mRank == '5'){
+            showcard = "5";
+        }
+        else if (mRank == '6'){
+            showcard = "6";
+        }
+        else if (mRank == '7'){
+            showcard = "7";
+        }
+        else if (mRank == '8'){
+            showcard = "8";
+        }
+        else if (mRank == '9'){
+            showcard = "9";
+        }
+        else if (mRank == '0'){
+            showcard = "10";
+        }
+        else if (mRank == 'Q'){
+            showcard = "Q";
+        }
+        else if (mRank == 'K'){
+            showcard = "K";
+        }
+        else if (mRank == 'J'){
+            showcard = "J";
+        }
+        
         if (mSuit == 'S') {
-            showcard += " of Spades";
+            showcard += "S";
         }
         else if (mSuit == 'H'){
-            showcard += " of Hearts";
+            showcard += "H";
+        }
+        else if (mSuit == 'D'){
+            showcard += "D";
+        }
+        else if (mSuit == 'C'){
+            showcard += "C";
         }
         cout<<showcard<<endl;
-        /*
-        switch(mRank) {
-             case '3':
-                 showcard = "Three";
-             case '2':
-                 showcard = "Two ";
-             case '4':
-                 showcard = "Four";
-             case '5':
-                 showcard = "Five ";
-             case '6':
-                 showcard = "Six";
-             case '7':
-                 showcard = "Seven";
-             case '8':
-                 showcard = "Eight";
-             case '9':
-                 showcard = "Nine";
-             case 'A':
-                 showcard = "One";
-             case 'K':
-                 showcard = "King";
-             case 'J':
-                 showcard = "Jack";
-             case 'Q':
-                showcard = "Queen";
-        }
-        switch (mSuit) {
-            case 'S':
-                showcard += " of Spades";
-            case 'H':
-                showcard += " of Hearts";
-            case 'C':
-                showcard += " of Clubs";
-            case 'D':
-                showcard += " of Diamond";
-        }
-        cout<<showcard<<endl;
-         */
-    
     };
+    
+string Card:: getCard(){
+    string showcard;
+    if(mRank == '0'){
+        showcard = "10";
+    }
+    else{
+        showcard = mRank;
+    }
+    return showcard + mSuit;
+}
 

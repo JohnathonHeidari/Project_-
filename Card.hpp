@@ -11,6 +11,8 @@
 
 #include <stdio.h>
 #include "Card.hpp"
+#include <string>
+
 class Card{
     // instance variable
     private:
@@ -26,6 +28,7 @@ class Card{
         void setCard(char,char);
         // other methoed
         void showCard();
+    std::string getCard();
     };
 
 
